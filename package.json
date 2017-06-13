@@ -1,0 +1,12 @@
+{
+  "name": "WebAudioPlayer",
+  "repository": "https://github.com/ibrookss/WebAudioPlayer",
+  "license": true,
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.3",
+    "mysql": "^2.13.0",
+    "socket.io": "^2.0.3"
+  }
+}
