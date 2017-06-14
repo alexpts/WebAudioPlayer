@@ -17,7 +17,6 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', exhb({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
 app.use(Router);
 
 app.listen(config.port, (err) => {
