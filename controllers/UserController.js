@@ -10,7 +10,6 @@ module.exports  = {
       login: req.body.login,
       password: sha1(req.body.password)
     }
-    console.log(UserData);
     let currentUser = await User.getByLogin(UserData.login);
     if(!!currentUser.length){
       //уже зарегистрирован
@@ -19,6 +18,29 @@ module.exports  = {
       User.add(UserData) ?
         response = {status: true, message: 'Вы зарегистрированы'} :
         response = {status: false, message: 'Ошибка, попробуйте еще раз'}
+    }
+    res.send(JSON.stringify(response));
+  },
+  auth: async (req, res) => {
+    let response;
+    let UserData = {
+      login: req.body.login,
+      password: sha1(req.body.password)
+    }
+    //При получении результата получаю массив, даже если запрос заведомо может дать только 1 результат.
+    let queryResult = await User.getByLogin(UserData.login);
+    if(!!queryResult.length){
+      let currentUser = queryResult[0];
+      if(currentUser.password == UserData.password){
+        req.session.user = {
+            id: currentUser.id
+        }
+        response = {status: true, message: 'Вы были авторизированы'}
+      }else{
+        response = {status: false, message: 'Неверный пароль'}
+      }
+    }else{
+      response = {status: false, message: 'Пользователь с таким именем не найдег'}
     }
     res.send(JSON.stringify(response));
   },
