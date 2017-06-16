@@ -1,6 +1,51 @@
-module.exports = (app) => {
-  app.route('/')
-    .get(function(req, res){
-      res.sendStatus(200);
-    })
+let User = require('../models/User.js');
+let sha1 = require('sha1');
+module.exports  = {
+  show_reg: (req ,res) => {
+    res.render('register')
+  },
+  register: async (req ,res) => {
+    let response;
+    let UserData = {
+      login: req.body.login,
+      password: sha1(req.body.password)
+    }
+    let currentUser = await User.getByLogin(UserData.login);
+    if(!!currentUser.length){
+      //уже зарегистрирован
+      response = {status: false, message: 'Имя пользователя занято'}
+    }else{
+      User.add(UserData) ?
+        response = {status: true, message: 'Вы зарегистрированы'} :
+        response = {status: false, message: 'Ошибка, попробуйте еще раз'}
+    }
+    res.send(JSON.stringify(response));
+  },
+  auth: async (req, res) => {
+    let response;
+    let UserData = {
+      login: req.body.login,
+      password: sha1(req.body.password)
+    }
+    //При получении результата получаю массив, даже если запрос заведомо может дать только 1 результат.
+    let queryResult = await User.getByLogin(UserData.login);
+    if(!!queryResult.length){
+      let currentUser = queryResult[0];
+      if(currentUser.password == UserData.password){
+        req.session.user = {
+            id: currentUser.id
+        }
+        response = {status: true, message: 'Вы были авторизированы'}
+      }else{
+        response = {status: false, message: 'Неверный пароль'}
+      }
+    }else{
+      response = {status: false, message: 'Пользователь с таким именем не найдег'}
+    }
+    res.send(JSON.stringify(response));
+  },
+  get: async (req, res) => {
+    let user = await User.getById(1);
+    res.send(user);
+  }
 }
