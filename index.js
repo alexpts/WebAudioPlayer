@@ -14,6 +14,7 @@ let Router = require('./router.js');
 app.use(session({ secret: 'GkGjsYUdfLdsB', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+app.use('/public',express.static('./public'));
 
 app.engine('handlebars', exhb({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

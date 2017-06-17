@@ -3,9 +3,93 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Mogra|Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/9c7db748b8.js"></script>
+    <link href="/public/css/style.css" rel="stylesheet">
     <title>Web Audio Player</title>
   </head>
   <body>
-    {{{body}}}
+    <!-- <div class="modal" id="register">
+      <div class="modal-window">
+        <div class="modal-header">
+            <div class="modal-name">Modal name</div>
+            <div class="modal-close" onclick="modalClose('register')">Close</div>
+        </div>
+        <div class="modal-content">
+            Modal-content
+        </div>
+      </div>
+    </div> -->
+    <div class="modal" id="register">
+      <div class="modal-window" id="register-window">
+        <div class="modal-header">
+            <div class="modal-name">Register</div>
+            <div class="modal-close" onclick="modalClose('register')">Close</div>
+        </div>
+        <div class="modal-content">
+            <form>
+              <table class="register_table">
+                <tr>
+                  <td>Login</td>
+                  <td><input type="text" name="login"></td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td><input type="password" name="login"></td>
+                </tr>
+              </table>
+              <input type="button" value="Register" class="button">
+            </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="login">
+      <div class="modal-window" id="login-window">
+        <div class="modal-header">
+            <div class="modal-name">Login</div>
+            <div class="modal-close" onclick="modalClose('login')">Close</div>
+        </div>
+        <div class="modal-content">
+            <form>
+              <table class="register_table">
+                <tr>
+                  <td>Login</td>
+                  <td><input type="text" name="login"></td>
+                </tr>
+                <tr>
+                  <td>Password</td>
+                  <td><input type="password" name="login"></td>
+                </tr>
+              </table>
+              <input type="button" value="Register" class="button">
+            </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="box">
+      <div class="header">
+        <div class="logo">The name for project</div>
+      </div>
+      <div class="content">
+        <div class="sidebar">
+          <ul class="side_menu">
+            <li onclick="modalOpen('register')">Sign in</li>
+            <li onclick="modalOpen('login')">Log in</li>
+            <li>Find music</li>
+            <li>Playlists</li>
+            <li>Channels</li>
+            <li>About WAP</li>
+          </ul>
+        </div>
+        <div class="main">
+          {{{body}}}
+        </div>
+      </div>
+    </div>
+    <script src="/public/js/modal.js"></script>
   </body>
 </html>
