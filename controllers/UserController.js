@@ -11,7 +11,7 @@ module.exports  = {
       password: sha1(req.body.password)
     }
     let currentUser = await User.getByLogin(UserData.login);
-    if(!!currentUser.length){
+    if(currentUser){
       //уже зарегистрирован
       response = {status: false, message: 'Имя пользователя занято'}
     }else{
@@ -28,9 +28,8 @@ module.exports  = {
       password: sha1(req.body.password)
     }
     //При получении результата получаю массив, даже если запрос заведомо может дать только 1 результат.
-    let queryResult = await User.getByLogin(UserData.login);
-    if(!!queryResult.length){
-      let currentUser = queryResult[0];
+    let currentUser = await User.getByLogin(UserData.login);
+    if(currentUser){
       if(currentUser.password == UserData.password){
         req.session.user = {
             id: currentUser.id
@@ -40,7 +39,7 @@ module.exports  = {
         response = {status: false, message: 'Неверный пароль'}
       }
     }else{
-      response = {status: false, message: 'Пользователь с таким именем не найдег'}
+      response = {status: false, message: 'Пользователь с таким именем не найден'}
     }
     res.send(JSON.stringify(response));
   },
