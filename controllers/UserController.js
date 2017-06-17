@@ -6,9 +6,12 @@ module.exports  = {
   },
   register: async (req ,res) => {
     let response;
+    console.log("Регистрируем");
+    console.log(req.body);
+
     let UserData = {
-      login: req.body.login,
-      password: sha1(req.body.password)
+      login: req.body.login ||  'Guest',
+      password: sha1(req.body.password) || 'aaa111'
     }
     let currentUser = await User.getByLogin(UserData.login);
     if(currentUser){
@@ -19,7 +22,8 @@ module.exports  = {
         response = {status: true, message: 'Вы зарегистрированы'} :
         response = {status: false, message: 'Ошибка, попробуйте еще раз'}
     }
-    res.send(JSON.stringify(response));
+    console.log(response);
+    res.json(response);
   },
   auth: async (req, res) => {
     let response;
