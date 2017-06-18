@@ -1,4 +1,5 @@
 let User = require('../models/User.js');
+let Music = require('../models/Music.js');
 let sha1 = require('sha1');
 module.exports  = {
   show_reg: (req ,res) => {

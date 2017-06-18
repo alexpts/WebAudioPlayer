@@ -8,7 +8,7 @@ function ajax(data){
   xhr.open(data.type, data.url, true);
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   xhr.send(JSON.stringify(data.data));
-  xhr.onreadystatechange = function() {
+  xhr.onreadystatechange = function() { // (3)
     if (xhr.readyState === xhr.DONE) {
       if (xhr.status === 200) {
           res = xhr.responseText;
