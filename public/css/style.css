@@ -15,6 +15,7 @@
     width: 100%;
     height: 50px;
     background: #236fbf;
+    position: relative;
   }
   .logo{
     color: white;
@@ -38,7 +39,7 @@
     min-height: 400px
   }
   .main{
-    width: 75%;
+    width: 100%;
   }
   .modal{
     background: rgba(0,0,0, 0.4);
@@ -47,6 +48,7 @@
     position: fixed;
     justify-content: center;
     display: none;
+    z-index:99;
   }
   .modal-window{
     width:450px;
@@ -196,6 +198,7 @@
     background: rgba(0,0,0,0.04);
     position: fixed;
     right: 0;
+    z-index:999;
   }
   .alert{
     width: 300px;
@@ -242,4 +245,109 @@
   }
   .remove_modal{
     margin-left: 300px;
+  }
+  .player{
+    height: 50px;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 2px;
+    border-bottom: 1px solid #dcdcdc;
+    transition: 0.5s;
+  }
+  .player_info{
+    width: 50px;
+  }
+  .player_info > img{
+    width: 50px;
+  }
+  .playerButton{
+    width: 30px;
+    height:30px;
+    margin: 10px 0px;
+    cursor: pointer;
+    line-height:30px;
+    text-align:center;
+  }
+  .playerButton:hover{
+    color: #236fbf;
+    font-size:19px;
+  }
+  .player_control{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .music_bar{
+    width: 50%;
+    padding: 5px;
+  }
+  .music_player_group, .music_player_name, .time{
+    display: inline-block;
+  }
+  .music_player_group{
+    font-size: 17px;
+  }
+  .time{
+    float: right;
+    color: grey;
+    font-size: 12px;
+  }
+  .music_player_name{
+    color: #5f5f5f;
+  }
+  .song_name{
+    width: 100%;
+  }
+  .time_line{
+    width: 100%;
+    height:20px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  .main_wrap{
+    width: 75%;
+    overflow: hidden;
+  }
+  .volume_control{
+    width: 100px;
+    height: 20px;
+    margin-top: 31px;
+    cursor: pointer;
+  }
+  .background_timeline{
+    background: #d8d8d8;
+    width: 100%;
+    height:4px;
+  }
+  .current_timeline{
+    background: #236fbf;
+    width: 100px;
+    height:4px;
+    position:absolute;
+  }
+  .expect_timeline{
+    background: rgba(11, 59, 109, 0.31);
+    width: 150px;
+    height:4px;
+    position:absolute;
+  }
+
+  .background_volume{
+    background: #d8d8d8;
+    width: 100%;
+    height:4px;
+  }
+  .current_volume{
+    background: #236fbf;
+    width: 20px;
+    height:4px;
+    position:absolute;
+  }
+  .expect_volume{
+    background: rgba(11, 59, 109, 0.31);
+    width: 50px;
+    height:4px;
+    position:absolute;
   }

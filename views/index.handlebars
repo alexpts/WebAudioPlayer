@@ -14,41 +14,19 @@
         Listening history
       </div>
       <div class="history_block_music">
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
+        {{#if user.history}}
+          <div class="music_block">
+            <div class="music_img">
+              <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
+              <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
+            </div>
+            <div class="music_group_name">Alan Walker</div>
+            <div class="music_name">Fade</div>
           </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
+        {{else}}
+          <h3 style="width: 100%; margin-top: 50px; text-align: center; font-color: #5a5a5a;">You have not music history :(</h3>
+        {{/if}}
 
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
-          </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
-
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
-          </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
-
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
-          </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
       </div>
     </div>
   </div>
