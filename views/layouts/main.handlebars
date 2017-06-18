@@ -21,6 +21,9 @@
         </div>
       </div>
     </div> -->
+    <div class="alerts" id="alerts">
+
+    </div>
     <div class="modal" id="register">
       <div class="modal-window" id="register-window">
         <div class="modal-header">
@@ -32,14 +35,14 @@
               <table class="register_table">
                 <tr>
                   <td>Login</td>
-                  <td><input type="text" name="login"></td>
+                  <td><input type="text" id="register_login_field" name="login"></td>
                 </tr>
                 <tr>
                   <td>Password</td>
-                  <td><input type="password" name="login"></td>
+                  <td><input type="password" id="register_password_field" name="login"></td>
                 </tr>
               </table>
-              <input type="button" value="Register" class="button">
+              <input type="button" value="Register" onclick="user.register()" class="button">
             </form>
         </div>
       </div>
@@ -56,14 +59,14 @@
               <table class="register_table">
                 <tr>
                   <td>Login</td>
-                  <td><input type="text" name="login"></td>
+                  <td><input type="text" id="auth_login_field" name="login"></td>
                 </tr>
                 <tr>
                   <td>Password</td>
-                  <td><input type="password" name="login"></td>
+                  <td><input type="password" id="auth_password_field" name="login"></td>
                 </tr>
               </table>
-              <input type="button" value="Register" class="button">
+              <input type="button" value="Log in" onclick="user.auth()" class="button">
             </form>
         </div>
       </div>
@@ -85,11 +88,55 @@
             <li>About WAP</li>
           </ul>
         </div>
-        <div class="main">
-          {{{body}}}
+        <div class="main_wrap">
+          <div class="player">
+            <div class="player_info">
+              <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
+            </div>
+            <div class="player_control">
+              <div class="play playerButton">
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </div>
+              <div class="pervious playerButton">
+                <i class="fa fa-step-backward" aria-hidden="true"></i>
+              </div>
+              <div class="next playerButton">
+                <i class="fa fa-step-forward" aria-hidden="true"></i>
+              </div>
+              <div class="music_bar">
+                <div class="song_name">
+                  <div class="music_player_group">Alan Walker</div>-
+                  <div class="music_player_name">Routine</div>
+                  <div class="time">2:42</div>
+                </div>
+                <div class="time_line">
+                  <div class="background_timeline">
+                    <div class="current_timeline"></div>
+                    <div class="expect_timeline"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="volume_control">
+                <div class="background_volume">
+                  <div class="current_volume"></div>
+                  <div class="expect_volume"></div>
+                </div>
+              </div>
+              <div class="repeat playerButton">
+                <i class="fa fa-repeat" aria-hidden="true"></i>
+              </div>
+
+            </div>
+          </div>
+          <div class="main">
+            {{{body}}}
+          </div>
         </div>
       </div>
     </div>
     <script src="/public/js/modal.js"></script>
+    <script src="/public/js/alerts.js"></script>
+    <script src="/public/js/user.js"></script>
+
   </body>
 </html>

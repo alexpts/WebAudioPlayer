@@ -6,20 +6,24 @@ module.exports  = {
   },
   register: async (req ,res) => {
     let response;
+    console.log("Регистрируем");
+    console.log(req.body);
+
     let UserData = {
-      login: req.body.login,
-      password: sha1(req.body.password)
+      login: req.body.login ||  'Guest',
+      password: sha1(req.body.password) || 'aaa111'
     }
     let currentUser = await User.getByLogin(UserData.login);
-    if(!!currentUser.length){
+    if(currentUser){
       //уже зарегистрирован
-      response = {status: false, message: 'Имя пользователя занято'}
+      response = {status: false, message: 'This login already exists'}
     }else{
       User.add(UserData) ?
-        response = {status: true, message: 'Вы зарегистрированы'} :
-        response = {status: false, message: 'Ошибка, попробуйте еще раз'}
+        response = {status: true, message: 'You ready to listen music!'} :
+        response = {status: false, message: 'Error :( Try again...'}
     }
-    res.send(JSON.stringify(response));
+    console.log(response);
+    res.json(response);
   },
   auth: async (req, res) => {
     let response;
@@ -28,20 +32,27 @@ module.exports  = {
       password: sha1(req.body.password)
     }
     //При получении результата получаю массив, даже если запрос заведомо может дать только 1 результат.
-    let queryResult = await User.getByLogin(UserData.login);
-    if(!!queryResult.length){
-      let currentUser = queryResult[0];
+    let currentUser = await User.getByLogin(UserData.login);
+    if(currentUser){
       if(currentUser.password == UserData.password){
         req.session.user = {
-            id: currentUser.id
+            id: currentUser.id,
+            login: currentUser.login
         }
-        response = {status: true, message: 'Вы были авторизированы'}
+        response = {status: true, message: 'You are beautiful!'}
       }else{
-        response = {status: false, message: 'Неверный пароль'}
+        response = {status: false, message: 'Incorrect password'}
       }
     }else{
-      response = {status: false, message: 'Пользователь с таким именем не найдег'}
+      response = {status: false, message: 'No such user :('}
     }
+    res.send(JSON.stringify(response));
+  },
+  exit: async (req, res) => {
+    let response;
+    req.session.user = {} ?
+      response = {status: true, message: 'We will miss you :('} :
+      response = {status: false, message: 'Error, how could this happen?'}
     res.send(JSON.stringify(response));
   },
   get: async (req, res) => {

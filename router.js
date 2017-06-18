@@ -3,10 +3,11 @@ const routerApi =  express.Router();
 
 const usersController = require('./controllers/UserController.js');
 const pageController = require('./controllers/PageController.js');
-routerApi.get('/', pageController.show_index);
-routerApi.get('/r', usersController.show_reg);
-routerApi.post('/r', usersController.register);
-routerApi.post('/a', usersController.auth);
-routerApi.get('/u', usersController.get);
+
+routerApi.get('/', pageController.index);
+routerApi.get('/update_main', pageController.update_main);
+routerApi.post('/register', usersController.register);
+routerApi.post('/auth', usersController.auth);
+routerApi.post('/exit', usersController.exit);
 
 module.exports = routerApi;

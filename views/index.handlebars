@@ -1,54 +1,36 @@
+{{#if user.id}}
 <div class="profile">
   <div class="user_info">
-    <img src="https://pbs.twimg.com/media/CsZ5snzUIAA9QoN.jpg"></img>
+    <img src="https://demontazh.lviv.ua/assets/icons/review-1.png"></img>
     <div class="about">
-      <div class="FIO">Lastname Name</div>
-      <div class="button">Выйти</div>
+      <div class="FIO">{{user.login}}</div>
+      <div class="button" onclick="user.exit()">Exit</div>
     </div>
 
   </div>
   <div class="user_history">
     <div class="history_block">
       <div class="history_block_name">
-        Title
+        Listening history
       </div>
       <div class="history_block_music">
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
+        {{#if user.history}}
+          <div class="music_block">
+            <div class="music_img">
+              <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
+              <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
+            </div>
+            <div class="music_group_name">Alan Walker</div>
+            <div class="music_name">Fade</div>
           </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
+        {{else}}
+          <h3 style="width: 100%; margin-top: 50px; text-align: center; font-color: #5a5a5a;">You have not music history :(</h3>
+        {{/if}}
 
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
-          </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
-
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
-          </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
-
-        <div class="music_block">
-          <div class="music_img">
-            <div class="play_button"><i class="fa fa-play" aria-hidden="true"></i></div>
-            <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
-          </div>
-          <div class="music_group_name">Alan Walker</div>
-          <div class="music_name">Fade</div>
-        </div>
       </div>
     </div>
   </div>
 </div>
+{{else}}
+<h3 style="width: 100%; margin-top: 50px; text-align: center; font-color: #5a5a5a;">You must be logged in</h3>
+{{/if}}

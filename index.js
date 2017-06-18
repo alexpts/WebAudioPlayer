@@ -11,8 +11,8 @@ let bodyParser = require('body-parser');
 let config = require('./config.js');
 let UserController = require('./controllers/UserController.js');
 let Router = require('./router.js');
-app.use(session({ secret: 'GkGjsYUdfLdsB', cookie: { maxAge: 60000 }, resave: true, saveUninitialized: true }));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(session({ secret: 'GkGjsYUdfLdsB', cookie: { maxAge: 600000 }, resave: true, saveUninitialized: true }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use('/public',express.static('./public'));
 
