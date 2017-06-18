@@ -1,16 +1,17 @@
+{{#if user.id}}
 <div class="profile">
   <div class="user_info">
-    <img src="https://pbs.twimg.com/media/CsZ5snzUIAA9QoN.jpg"></img>
+    <img src="https://demontazh.lviv.ua/assets/icons/review-1.png"></img>
     <div class="about">
-      <div class="FIO">Lastname Name</div>
-      <div class="button">Выйти</div>
+      <div class="FIO">{{user.login}}</div>
+      <div class="button" onclick="user.exit()">Exit</div>
     </div>
 
   </div>
   <div class="user_history">
     <div class="history_block">
       <div class="history_block_name">
-        Title
+        Listening history
       </div>
       <div class="history_block_music">
         <div class="music_block">
@@ -52,3 +53,6 @@
     </div>
   </div>
 </div>
+{{else}}
+<h3 style="width: 100%; margin-top: 50px; text-align: center; font-color: #5a5a5a;">You must be logged in</h3>
+{{/if}}

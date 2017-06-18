@@ -1,5 +1,8 @@
 module.exports = {
-  show_index: (req, res) =>{
-    res.render('index', {'User': req.session.user || 'Guest'})
+  index: (req, res) =>{
+    res.render('index', {user: req.session.user || {login: 'Guest'}})
+  },
+  update_main: (req, res) =>{
+    res.render('index', {layout: false, user: req.session.user || {login: 'Guest'}})
   }
 }

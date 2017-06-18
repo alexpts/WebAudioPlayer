@@ -19,22 +19,73 @@ function ajax(data){
   return;
 }
 
-
+function update_index(){
+  ajax({
+    url: '/update_main',
+    type: 'get',
+    success: function(data){
+      document.querySelector('.main').innerHTML = (data);
+    }
+  })
+}
+update_index()
 let user = {
   register(){
-
+    ajax({
+      type: 'post',
+      url: '/register',
+      data: {
+        login: getValue('#register_login_field'), //getValue('#register_login_field'),
+        password: getValue('#register_password_field') //getValue('#register_password_field')
+      },
+      success: function(data){
+          console.log(data);
+          data = JSON.parse(data);
+          if(data.status){
+            modalClose('register');
+            alert(data.message);
+            update_index();
+          }else{
+            alert(data.message);
+          }
+      }
+    })
+  },
+  auth(){
+    ajax({
+      type: 'post',
+      url: '/auth',
+      data: {
+        login: getValue('#auth_login_field'), //getValue('#register_login_field'),
+        password: getValue('#auth_password_field') //getValue('#register_password_field')
+      },
+      success: function(data){
+          console.log(data);
+          data = JSON.parse(data);
+          if(data.status){
+            modalClose('login');
+            alert(data.message);
+            update_index();
+          }else{
+            alert(data.message);
+          }
+      }
+    })
+  },
+  exit(){
+    ajax({
+      type: 'post',
+      url: '/exit',
+      success: function(data){
+          console.log(data);
+          data = JSON.parse(data);
+          if(data.status){
+            alert(data.message);
+            update_index();
+          }else{
+            alert(data.message);
+          }
+      }
+    })
   }
 }
-
-ajax({
-  type: 'post',
-  url: '/register',
-  data: {
-    login: 'ibrooks', //getValue('#register_login_field'),
-    password: 123 //getValue('#register_password_field')
-  },
-  success: function(data){
-      console.log(data);
-  }
-})
-user.register();
