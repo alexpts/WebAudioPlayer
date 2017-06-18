@@ -189,3 +189,57 @@
     font-size:19px;
     color: #000;
   }
+  .alerts{
+    min-width: 0;
+    max-width: 300px;
+    height:100vh;
+    background: rgba(0,0,0,0.04);
+    position: fixed;
+    right: 0;
+  }
+  .alert{
+    width: 300px;
+    height: 70px;
+    background: white;
+    text-align: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-bottom: 5px;
+  }
+  .alert:hover .close_alert{
+    margin: 0;
+  }
+  .alert:hover .alert_txt{
+    width: calc(100% - 90px);
+  }
+  .close_alert{
+    width: 70px;
+    float: right;
+    height: 100%;
+    line-height: 70px;
+    font-size: 40px;
+    background: rgba(0, 0, 0, 0.2);
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-right: -70px;
+  }
+  .green{
+    border-left: 6px solid #75f760;
+  }
+  .red{
+    border-left: 6px solid #f76060;
+  }
+  .close_alert:hover{
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .alert_txt{
+    float: left;
+    width: calc(100% - 90px);
+    transition: 0.3s;
+    padding: 10px;
+  }
+  .remove_modal{
+    margin-left: 300px;
+  }

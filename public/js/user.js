@@ -43,10 +43,10 @@ let user = {
           data = JSON.parse(data);
           if(data.status){
             modalClose('register');
-            alert(data.message);
+            allert.create(data.status, data.message);
             update_index();
           }else{
-            alert(data.message);
+            allert.create(data.status, data.message);
           }
       }
     })
@@ -64,7 +64,7 @@ let user = {
           data = JSON.parse(data);
           if(data.status){
             modalClose('login');
-            alert(data.message);
+            allert.create(data.status, data.message);
             update_index();
           }else{
             alert(data.message);
@@ -80,10 +80,12 @@ let user = {
           console.log(data);
           data = JSON.parse(data);
           if(data.status){
-            alert(data.message);
+            //alert(data.message);
+            allert.create(data.status, data.message);
             update_index();
           }else{
-            alert(data.message);
+            //alert(data.message);
+            allert.create(data.status, data.message);
           }
       }
     })
