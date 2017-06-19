@@ -10,7 +10,7 @@ let Music = {
   },
   getAll : function(id){
     try{
-      return db.query(`SELECT * FROM musics`);
+      return db.query(`SELECT * FROM musics ORDER BY group_name asc`);
     }catch(e){
       console.log('ERROR2')
     }
@@ -20,6 +20,13 @@ let Music = {
       return db.query(`SELECT playlists FROM users WHERE id = ?`, user_id);
     }catch(e){
       console.log('ERROR 1')
+    }
+  },
+  getPlayListById(id){
+    try{
+      return db.query(`SELECT * FROM playlists WHERE id = ?`, id);
+    }catch(e){
+      console.log('ERROR 12')
     }
   },
   getAllPlaylists(){

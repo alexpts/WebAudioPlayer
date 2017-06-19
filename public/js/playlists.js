@@ -11,7 +11,7 @@ function show_playlists(url, limit){
       console.log(data);
       for (playlist of data){
         playlists_block.innerHTML+=`
-          <div class="playlist_block" onclick="load('playlist/${playlist.id}', {playlistId: ${playlist.id}})">
+          <div class="playlist_block" onclick="load('playlist', {playlistId: ${playlist.id}})">
             <img src="${playlist.photo}">
             <div class="playlist_block_name">
               ${playlist.title}
@@ -26,5 +26,5 @@ function show_playlists(url, limit){
   })
 }
 if(window.location == 'playlists'){
- show_playlists('/getAllPlaylist', 3);  
+ show_playlists('/getAllPlaylist', 3);
 }

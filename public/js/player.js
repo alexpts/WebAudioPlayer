@@ -15,6 +15,7 @@ player.volume = 0.3;
 
 let playerControl = {
   play: () => {
+    playerControl.show();
     let button = document.getElementById('play_button');
     if(!player.paused && !player.ended){
       player.pause();
@@ -69,6 +70,9 @@ let playerControl = {
   },
   moment: (time) => {
     player.currentTime = time;
+  },
+  show: () => {
+    document.querySelector('.player').classList.remove('hide_player');
   },
   update(){
     if (!player.ended){

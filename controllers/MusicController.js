@@ -35,15 +35,12 @@ module.exports = {
   },
   getPlayListMusic: async (req, res) => {
     let id = req.params.id;
-    let musicsidArray = await Music.getMusicsPlaylist(id);
-    console.log(musicsidArray.songs);
     let musicsArray = [];
+    let musicsidArray = await Music.getMusicsPlaylist(id);
+    musicsidArray = musicsidArray.songs.split(',');
     if(musicsidArray){
-      for (musicid of musicsidArray.songs.split(',')){
-        console.log(musicid);
-        if (musicid != ','){
+      for (musicid of musicsidArray){
           musicsArray.push(await Music.getById(musicid));
-        }
       }
     }
     res.json(musicsArray);

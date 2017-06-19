@@ -6,8 +6,11 @@
     justify-content: center;
     background: #e4e4e4;
   }
+  .hide_player{
+    margin-top: -60px;
+  }
   .box{
-    width:750px;
+    width: 900px;
     min-height:400px;
     background: #fff;
     box-shadow: 0px 0px 0.5px 0px #b7b7b7;
@@ -17,11 +20,12 @@
     height: 50px;
     background: #236fbf;
     position: relative;
+    z-index: 9;
   }
   .logo{
     color: white;
     line-height: 50px;
-    font-size: 15px;
+    font-size: 25px;;
     width: calc(25% - 20px);
     float: left;
     padding: 0px 10px;
@@ -120,6 +124,11 @@
     transition: 0.2s;
   }
   .side_menu > li:hover{
+    background: #f1f6fb;
+    width: calc(100% - 25px);
+    border-left: 5px solid #236fbf;
+  }
+  .side_menu_active{
     background: #f1f6fb;
     width: calc(100% - 25px);
     border-left: 5px solid #236fbf;
@@ -292,7 +301,7 @@
   }
 
   .music_bar{
-    width: 50%;
+    width: 60%;
     padding: 5px;
   }
   .music_player_group, .music_player_name, .time{
@@ -438,7 +447,7 @@
 }
 .playlist_header > img{
   width:100px;
-  height: 100px;
+  max-height: 129px;
   float: left;
   border: 1px solid white;
 }
@@ -454,17 +463,45 @@
   font-size: 17px;
   text-transform: uppercase;
 }
-.playlist_tags{
-  padding:10px;
+.playlist_description{
+  width:200px;
+  max-height:50px;
+  border:1px solid white;
+  padding: 5px;
+  margin: 5px 0px;
 }
-.tag{
-  display: inline-block;
-  margin-left:5px;
-  border: 1px solid white;
-  padding:2px 10px;
-  cursor: pointer;
+.song_filter{
+  width: 90%;
+  border:1px solid gainsboro;
+  margin: 10px auto;
+  height: 30px;
+  display:flex;
+  justify-content: space-between;
 }
-.tag:hover{
+.song_filter > input{
   background: white;
-  color: black;
+  border: none;
+  outline:none;
+  padding: 5px 20px;
+  margin: 0;
+  height: calc(100% - 10px);
+}
+
+.song_filter > input:first-child{
+  border-right:1px solid gainsboro;
+  width:90%;
+
+}
+.song_filter > input:last-child{
+  width:calc(20% - 1px);
+  cursor: pointer;
+  background: #efefef;
+  height:100%;
+}
+.song_filter > input:last-child:hover{
+  background: #236fbf;
+  color: white;
+}
+.song_filter > input:focus{
+  box-shadow: 0 0 2px 0px #236fbf;
 }

@@ -10,7 +10,6 @@ function show_audio(url, limit){
       let id = 1;
       data = JSON.parse(data);
       for (song of data){
-        console.log(data);
         buffer.push(song); //Добавляем в буфер
         audio_block.innerHTML+=`
           <div class="music_block">

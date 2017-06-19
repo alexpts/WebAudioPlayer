@@ -55,6 +55,9 @@ module.exports = {
     res.render('playlists');
   },
   load_playlist: async (req, res) => {
-    res.render('playlist');
+    let id = req.params.id;
+    let playlist = await Music.getPlayListById(id);
+    let user = await User.getById(playlist.author)
+    res.render('playlist', {author: user.login, title: playlist.title, description: playlist.description, photo: playlist.photo});
   }
 }
