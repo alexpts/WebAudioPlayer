@@ -1,0 +1,38 @@
+{{#if user.id}}
+<div class="profile">
+  <div class="user_info">
+    <img src="https://demontazh.lviv.ua/assets/icons/review-1.png"></img>
+    <div class="about">
+      <div class="FIO">{{user.login}}</div>
+      <div class="button" onclick="user.exit()">Exit</div>
+    </div>
+
+  </div>
+  <div class="user_history">
+    <div class="history_block">
+      <div class="history_block_name">
+        Listening history
+      </div>
+      <div class="history_block_music">
+        {{#if musics}}
+          {{#each musics}}
+            <div class="music_block">
+              <div class="music_img">
+                <div class="play_button"><i class="fa fa-play" onclick="playerControl.load('{{url}}', '{{photo}}', '{{group_name}}', '{{title}}')" aria-hidden="true"></i></div>
+                <img src="{{photo}}">
+              </div>
+              <div class="music_group_name">{{group_name}}</div>
+              <div class="music_name">{{title}}</div>
+            </div>
+          {{/each}}
+        {{else}}
+          <h3 style="width: 100%; margin-top: 50px; text-align: center; font-color: #5a5a5a;">You have not music history :(</h3>
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+<h3 style="width: 100%; margin-top: 50px; text-align: center; font-color: #5a5a5a;">You must be logged in</h3>
+{{/if}}

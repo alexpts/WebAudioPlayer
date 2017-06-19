@@ -334,7 +334,7 @@
   }
   .expect_timeline{
     background: rgba(11, 59, 109, 0.31);
-    width: 150px;
+    width: 0;
     height:3px;
     position:absolute;
   }
@@ -352,7 +352,7 @@
   }
   .expect_volume{
     background: rgba(11, 59, 109, 0.31);
-    width: 50px;
+    width: 0;
     height:3px;
     position:absolute;
   }

@@ -82,19 +82,23 @@
           <ul class="side_menu">
             <li onclick="modalOpen('register')">Sign in</li>
             <li onclick="modalOpen('login')">Log in</li>
-            <li>Find music</li>
+            <li onclick="load('profile/13')">Find music</li>
             <li>Playlists</li>
             <li>Channels</li>
             <li>About WAP</li>
           </ul>
         </div>
         <div class="main_wrap">
+          <audio controls id="player_source" hidden>
+            <source src="sound.ogg">
+            <source id="player_src" src="/public/music/c0bfb76567fa50273addb853a8b6f408785c593b.mp3">
+          </audio>
           <div class="player">
             <div class="player_info">
-              <img src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
+              <img id="player_photo" src="http://tabs4you.ru/media/images/20/26/7939573466523923.jpg">
             </div>
             <div class="player_control">
-              <div class="play playerButton">
+              <div class="play playerButton" id="play_button" onclick="playerControl.play()">
                 <i class="fa fa-play" aria-hidden="true"></i>
               </div>
               <div class="pervious playerButton">
@@ -107,19 +111,19 @@
                 <div class="song_name">
                   <div class="music_player_group">Alan Walker</div>-
                   <div class="music_player_name">Routine</div>
-                  <div class="time">2:42</div>
+                  <div class="time" id="player_time">2:42</div>
                 </div>
-                <div class="time_line">
+                <div class="time_line" id="timeline">
                   <div class="background_timeline">
-                    <div class="current_timeline"></div>
-                    <div class="expect_timeline"></div>
+                    <div class="current_timeline" id="current_timeline"></div>
+                    <div class="expect_timeline" id="timeline_expect"></div>
                   </div>
                 </div>
               </div>
-              <div class="volume_control">
+              <div class="volume_control"  id="volumeline">
                 <div class="background_volume">
-                  <div class="current_volume"></div>
-                  <div class="expect_volume"></div>
+                  <div class="current_volume" id="current_volumeline"></div>
+                  <div class="expect_volume" id="volumeline_expect"></div>
                 </div>
               </div>
               <div class="repeat playerButton">
@@ -134,9 +138,11 @@
         </div>
       </div>
     </div>
+    <script src="/public/js/main.js"></script>
+    <script src="/public/js/pages.js"></script>
+    <script src="/public/js/player.js"></script>
     <script src="/public/js/modal.js"></script>
     <script src="/public/js/alerts.js"></script>
     <script src="/public/js/user.js"></script>
-
   </body>
 </html>

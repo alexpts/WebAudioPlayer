@@ -6,7 +6,10 @@ const pageController = require('./controllers/PageController.js');
 const musicController = require('./controllers/MusicController.js');
 
 routerApi.get('/', pageController.index);
-routerApi.get('/update_main', pageController.update_main);
+routerApi.get('/load_index', pageController.load_index);
+routerApi.get('/load_fmusic', pageController.load_fmusic);
+routerApi.get('/load_profile/:id', pageController.load_profile);
+
 routerApi.post('/register', usersController.register);
 routerApi.post('/auth', usersController.auth);
 routerApi.post('/exit', usersController.exit);
