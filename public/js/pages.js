@@ -1,16 +1,22 @@
-function load(page){
+function load(page, userdata){
   ajax({
-    url: `/load_${page}`,
+    url: `/${page}`,
     type: 'get',
     success: function(data){
-      console.log(data);
-      window.history.pushState({}, 'Моя новая страница', this.url);
+      window.history.pushState(null, null, this.url);
       var el = document.createElement( 'html' );
       el.innerHTML = data;
       document.querySelector('.main').innerHTML = (el.querySelector('.main').innerHTML);
-
-      if(page == 'playlists'){
+      //Как это сделать правильно?
+      if (userdata){
+        console.log(13);
+        show_audio(`/getPlayListMusic/${userdata.playlistId}`, 4);
+      }
+      if(page == 'audios'){
         show_audio('/getAllMusic', 4);
+      }
+      if(page == 'playlists'){
+        show_playlists('/getAllPlaylist', 4);
       }
     }
   })

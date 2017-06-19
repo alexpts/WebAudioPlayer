@@ -1,7 +1,6 @@
 let Music = require('../models/Music.js');
 module.exports = {
   getUsersPlayLists: async (req, res) => {
-    console.log('Получаем музыку');
     let userId =req.params.id;
     let userPlaylist = await Music.getUsersPlayLists(userId);
     let playListArray = userPlaylist.playlists.split(',');
@@ -25,8 +24,28 @@ module.exports = {
     res.json(musicsArray);
   },
   getAllMusic: async (req, res) => {
-    let musics =await  Music.getAll();
-    console.log(musics);
+    let musics =await Music.getAll();
     res.json(musics);
+  },
+  getAllPlaylist: async (req, res) => {
+    let playlists = await Music.getAllPlaylists();
+    let response;
+    !playlists.length ? response = [playlists] : response = playlists;
+    res.json(response);
+  },
+  getPlayListMusic: async (req, res) => {
+    let id = req.params.id;
+    let musicsidArray = await Music.getMusicsPlaylist(id);
+    console.log(musicsidArray.songs);
+    let musicsArray = [];
+    if(musicsidArray){
+      for (musicid of musicsidArray.songs.split(',')){
+        console.log(musicid);
+        if (musicid != ','){
+          musicsArray.push(await Music.getById(musicid));
+        }
+      }
+    }
+    res.json(musicsArray);
   }
 }

@@ -22,6 +22,13 @@ let Music = {
       console.log('ERROR 1')
     }
   },
+  getAllPlaylists(){
+    try{
+      return db.query(`SELECT * FROM playlists`);
+    }catch(e){
+      console.log('ERROR2')
+    }
+  },
   getMusicsPlaylist(playlist_id){
     try{
       if (playlist_id > 0){

@@ -75,23 +75,22 @@
 
     <div class="box">
       <div class="header">
-        <div class="logo">The name for project</div>
+        <div class="logo" onclick="load('index')">The name for project</div>
       </div>
       <div class="content">
         <div class="sidebar">
           <ul class="side_menu">
             <li onclick="modalOpen('register')">Sign in</li>
             <li onclick="modalOpen('login')">Log in</li>
-            <li onclick="load('playlists')">Find music</li>
-            <li>Playlists</li>
+            <li onclick="load('audios')">Find music</li>
+            <li onclick="load('playlists')">Playlists</li>
             <li>Channels</li>
             <li>About WAP</li>
           </ul>
         </div>
         <div class="main_wrap">
           <audio controls id="player_source" hidden>
-            <source src="sound.ogg">
-            <source id="player_src" src="/public/music/c0bfb76567fa50273addb853a8b6f408785c593b.mp3">
+            <source id="player_src" src="">
           </audio>
           <div class="player">
             <div class="player_info">
@@ -126,7 +125,7 @@
                   <div class="expect_volume" id="volumeline_expect"></div>
                 </div>
               </div>
-              <div class="repeat playerButton">
+              <div class="repeat playerButton" id="repeat_button" onclick="playerControl.repeat()">
                 <i class="fa fa-repeat" aria-hidden="true"></i>
               </div>
 
@@ -141,9 +140,10 @@
     <script src="/public/js/main.js"></script>
     <script src="/public/js/pages.js"></script>
     <script src="/public/js/player.js"></script>
+    <script src="/public/js/audios.js"></script>
+    <script src="/public/js/playlists.js"></script>
     <script src="/public/js/modal.js"></script>
     <script src="/public/js/alerts.js"></script>
     <script src="/public/js/user.js"></script>
-    <script src="/public/js/playlists.js"></script>
   </body>
 </html>

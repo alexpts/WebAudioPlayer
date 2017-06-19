@@ -48,11 +48,13 @@ module.exports = {
       }
     res.render('profile', {user: user, musics: musicsArray})
   },
-  load_playlists: async (req, res) => {
-    let musics = await Music.getAll();
-    res.render('playlists', {musics: musics});
+  load_audios: async (req, res) => {
+    res.render('audios');
   },
-  load_playlist: (req, res) => {
-
+  load_playlists: async (req, res) => {
+    res.render('playlists');
+  },
+  load_playlist: async (req, res) => {
+    res.render('playlist');
   }
 }

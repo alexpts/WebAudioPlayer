@@ -1,4 +1,4 @@
-(function show_audio(url, limit){
+function show_playlists(url, limit){
   ajax({
     type: 'post',
     url: url,
@@ -6,22 +6,25 @@
       limit: limit
     },
     success: function(data){
-      let audio_block = document.querySelector('.songs_block');
-      let id = 1;
+      let playlists_block = document.querySelector('.playlists_block');
       data = JSON.parse(data);
-      for (song of data){
-        buffer.push(song); //Добавляем в буфер
-        audio_block.innerHTML+=`
-          <div class="music_block">
-            <div class="music_img">
-              <div class="play_button"><i class="fa fa-play" onclick="playerControl.load('${song.url}', '${song.photo}', '${song.group_name}', '${song.title}', ${buffer.length-1})" aria-hidden="true"></i></div>
-              <img src="${song.photo}">
+      console.log(data);
+      for (playlist of data){
+        playlists_block.innerHTML+=`
+          <div class="playlist_block" onclick="load('playlist/${playlist.id}', {playlistId: ${playlist.id}})">
+            <img src="${playlist.photo}">
+            <div class="playlist_block_name">
+              ${playlist.title}
             </div>
-            <div class="music_group_name">${song.group_name}</div>
-            <div class="music_name">${song.title}</div>
+            <div class="playlist_block_description">
+              ${playlist.description}
+            </div>
           </div>
         `;
       }
     }
   })
-})('/getAllMusic', 4);
+}
+if(window.location == 'playlists'){
+ show_playlists('/getAllPlaylist', 3);  
+}

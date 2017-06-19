@@ -9,7 +9,10 @@ let music_player_name = document.querySelector('.music_player_name');
 let buffer = [];
 let currentMusicId = 0;
 let status = false;
+let repeatstatus = false;
+
 player.volume = 0.3;
+
 let playerControl = {
   play: () => {
     let button = document.getElementById('play_button');
@@ -22,6 +25,14 @@ let playerControl = {
       button.classList.remove('pause');
       button.innerHTML = '<i class="fa fa-pause" aria-hidden="true"></i>'
     }
+  },
+  repeat: () => {
+    repeatstatus = !repeatstatus;
+
+    let button = document.getElementById('repeat_button');
+
+    repeatstatus ? button.classList.add('repeat_on') : button.classList.remove('repeat_on');
+
   },
   stop: () => {
     player.currentTime = 0;
@@ -83,6 +94,12 @@ let playerControl = {
       current_timeline.style.width = `${expectTimelineLength}px`;
       current_volumeline.style.width = `${expectVolumelineLength}px`;
       timeField.innerHTML = `${minutes}:${seconds}`;
+    }else{
+      if (repeatstatus){
+        playerControl.play();
+      }else{
+        playerControl.next();
+      }
     }
   }
 }
