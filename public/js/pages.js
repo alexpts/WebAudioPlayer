@@ -8,6 +8,10 @@ function load(page){
       var el = document.createElement( 'html' );
       el.innerHTML = data;
       document.querySelector('.main').innerHTML = (el.querySelector('.main').innerHTML);
+
+      if(page == 'playlists'){
+        show_audio('/getAllMusic', 4);
+      }
     }
   })
 }

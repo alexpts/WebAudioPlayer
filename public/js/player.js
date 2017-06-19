@@ -4,7 +4,10 @@ let player_photo = document.getElementById('player_photo');
 let music_player_group = document.querySelector('.music_player_group');
 let music_player_name = document.querySelector('.music_player_name');
 
+
+
 let buffer = [];
+let currentMusicId = 0;
 let status = false;
 player.volume = 0.3;
 let playerControl = {
@@ -24,7 +27,28 @@ let playerControl = {
     player.currentTime = 0;
     player.pause();
   },
-  load: (url, photo, group, title) => {
+  next: () => {
+    currentMusicId++;
+    if (currentMusicId > buffer.length-1){
+      currentMusicId = 0;
+    }
+    let newSong = buffer[currentMusicId];
+
+    console.log(newSong)
+    playerControl.load(newSong.url, newSong.photo, newSong.group_name, newSong.title, currentMusicId);
+  },
+  pervious: () => {
+    currentMusicId--;
+    if (currentMusicId < 0){
+      currentMusicId = buffer.length-1;
+    }
+    let newSong = buffer[currentMusicId];
+
+    console.log(newSong)
+    playerControl.load(newSong.url, newSong.photo, newSong.group_name, newSong.title, currentMusicId);
+  },
+  load: (url, photo, group, title, bufferId) => {
+    currentMusicId = bufferId;
     playerControl.stop();
     player_photo.src = `${photo}`;
     music_player_group.innerHTML = group;

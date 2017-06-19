@@ -82,7 +82,7 @@
           <ul class="side_menu">
             <li onclick="modalOpen('register')">Sign in</li>
             <li onclick="modalOpen('login')">Log in</li>
-            <li onclick="load('profile/13')">Find music</li>
+            <li onclick="load('playlists')">Find music</li>
             <li>Playlists</li>
             <li>Channels</li>
             <li>About WAP</li>
@@ -101,10 +101,10 @@
               <div class="play playerButton" id="play_button" onclick="playerControl.play()">
                 <i class="fa fa-play" aria-hidden="true"></i>
               </div>
-              <div class="pervious playerButton">
+              <div class="pervious playerButton" onclick="playerControl.pervious()" >
                 <i class="fa fa-step-backward" aria-hidden="true"></i>
               </div>
-              <div class="next playerButton">
+              <div class="next playerButton" onclick="playerControl.next()">
                 <i class="fa fa-step-forward" aria-hidden="true"></i>
               </div>
               <div class="music_bar">
@@ -144,5 +144,6 @@
     <script src="/public/js/modal.js"></script>
     <script src="/public/js/alerts.js"></script>
     <script src="/public/js/user.js"></script>
+    <script src="/public/js/playlists.js"></script>
   </body>
 </html>

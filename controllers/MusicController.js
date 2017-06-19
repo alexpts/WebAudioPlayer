@@ -23,5 +23,10 @@ module.exports = {
       }
     }
     res.json(musicsArray);
+  },
+  getAllMusic: async (req, res) => {
+    let musics =await  Music.getAll();
+    console.log(musics);
+    res.json(musics);
   }
 }

@@ -8,6 +8,13 @@ let Music = {
       console.log('ERROR2')
     }
   },
+  getAll : function(id){
+    try{
+      return db.query(`SELECT * FROM musics`);
+    }catch(e){
+      console.log('ERROR2')
+    }
+  },
   getUsersPlayLists(user_id){
     try{
       return db.query(`SELECT playlists FROM users WHERE id = ?`, user_id);
